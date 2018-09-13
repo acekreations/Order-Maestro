@@ -6,8 +6,10 @@ var Order = require("../models/orders.js");
 var Plate = require("../models/plates.js");
 
 router.get("/", function(req, res){
-  Plate.findAll({}).then(function(plateData){
-    res.render("index", plateData);
+  Plate.findAll({}).then(function(plates){
+    // console.log(plateData);
+    // plates = plates[0].dataValues;
+    res.render("index", {plates: plates});
   });
 });
 
