@@ -9,7 +9,8 @@ var Order = sequelize.define("order", {
     type: Sequelize.STRING
   },
   completed: {
-    type: Sequelize.BOOLEAN
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 });
 
