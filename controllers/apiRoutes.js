@@ -14,4 +14,18 @@ router.post("/place", function(req, res){
   });
 });
 
+router.get("/outstanding/:id", function(req, res){
+  Order.findAll({
+    where: {
+      user_id: req.params.id,
+      completed: false
+    },
+    order: [
+      ['id', 'ASC'],
+    ],
+  }).then(function(orders){
+    res.json(orders);
+  });
+});
+
 module.exports = router;

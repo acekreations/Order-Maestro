@@ -39,7 +39,15 @@ $("#placeOrder").on("click", function(){
   });
 });
 
+function getOutstanding() {
+  $.get("/api/outstanding/" + localStorage.getItem("user_id"), function(res){
+    $("#outstandingBadge").text(res.length);
+  });
+}
+
 $(function(){
+
+  getOutstanding();
 
   if (!localStorage.getItem("user_id")) {
     var id = "";
