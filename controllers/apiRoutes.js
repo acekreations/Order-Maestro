@@ -10,7 +10,22 @@ router.post("/place", function(req, res){
     user_id: req.body.userId,
     items: req.body.items
   }).then(function(data){
-    console.log("posted");
+    res.json(data);
+  });
+});
+
+router.post("/complete", function(req, res){
+  Order.update(
+    {
+      completed: true
+    },
+    {
+      where: {
+        id: req.body.id
+      }
+    }
+  ).then(function(data){
+    res.json(data);
   });
 });
 

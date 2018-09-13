@@ -32,10 +32,16 @@ $("#placeOrder").on("click", function(){
     items: JSON.stringify(items)
   };
 
-  $("#createOrderItems").empty();
+  $.post("/api/place", placeOrder, function(){
+    $("#createOrderItems").empty();
+    getOutstanding();
+  });
+});
 
-  $.post("/api/place", placeOrder,  function(res){
-
+$(".completeOrder").on("click", function(){
+  var id = $(this).attr("data-orderId");
+  $.post("/api/complete", {id: id}, function(res){
+    $("#" + id).remove();
   });
 });
 
