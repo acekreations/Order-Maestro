@@ -19,8 +19,12 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //Set up routes
-var routes = require("./controllers/orderRoutes.js");
-app.use("/", routes);
+var apiRoutes = require("./controllers/apiRoutes.js");
+app.use("/api", apiRoutes);
+
+var htmlRoutes = require("./controllers/htmlRoutes.js");
+app.use("/", htmlRoutes);
+
 
 app.listen(PORT, function(){
   console.log("listening on port " + PORT);
