@@ -1,3 +1,4 @@
+//Put order item into a table
 function displayToOrder(item) {
   var tr = $("<tr>");
   var td = $("<td>").text(item);
@@ -6,17 +7,20 @@ function displayToOrder(item) {
   $("#createOrderItems").append(tr);
 }
 
+//put items into the order container
 $("#create-order").on("click", ".food-item", function(){
   var item = $(this).text();
   displayToOrder(item);
 });
 
+//put custom item into the order container
 $("#customItem").on("click", "#addCustomItem", function(){
   var item = $("#customItemInput").val().trim();
   $("#customItemInput").val("");
   displayToOrder(item);
 });
 
+//query api to place the order
 $("#placeOrder").on("click", function(){
   var userId = localStorage.getItem("user_id");
   var items = [];
@@ -38,6 +42,7 @@ $("#placeOrder").on("click", function(){
   });
 });
 
+//mark order as complete and remove it from outstanding order list
 $(".completeOrder").on("click", function(){
   var id = $(this).attr("data-orderId");
   $.post("/api/complete", {id: id}, function(res){
@@ -45,6 +50,7 @@ $(".completeOrder").on("click", function(){
   });
 });
 
+//display outstanding order count on on side menu
 function getOutstanding() {
   $.get("/api/outstanding/" + localStorage.getItem("user_id"), function(res){
     $("#outstandingBadge").text(res.length);

@@ -5,6 +5,9 @@ var app = express();
 //Set port
 var PORT = process.env.PORT || 8000;
 
+//Require models
+var db = require("./models");
+
 //Set static file path for server
 app.use(express.static("public"));
 
@@ -19,13 +22,12 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //Set up routes
-var apiRoutes = require("./controllers/apiRoutes.js");
-app.use("/api", apiRoutes);
-
-var htmlRoutes = require("./controllers/htmlRoutes.js");
-app.use("/", htmlRoutes);
+require("./routes/apiRoutes.js")(app);
+require("./routes/htmlRoutes.js")(app);
 
 
-app.listen(PORT, function(){
-  console.log("listening on port " + PORT);
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
