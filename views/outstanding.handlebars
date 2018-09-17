@@ -1,9 +1,11 @@
 <div class="row mb-5">
+  <!-- display side nav partial -->
   <div class="col-3 border-right">
     {{> sideNav active}}
   </div>
   <div class="col-9">
     <div class="tab-content" id="v-pills-tabContent">
+      <!-- display each order as a card -->
       <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
         {{#each orders}}
         <div id="{{this.id}}" class="card mb-4 shadow border-0">
@@ -13,6 +15,7 @@
               <button type="button" class="completeOrder btn btn-success" data-orderId="{{this.id}}"><i class="fas fa-check fa-2x"></i><br>Complete</button>
             </div>
             <table class="table table-striped">
+              <!-- display each order item in a table -->
               <tbody>
                 {{#each items}}
                 <tr>

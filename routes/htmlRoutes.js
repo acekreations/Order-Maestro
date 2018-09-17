@@ -1,6 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
+  //render home page
   app.get("/", function(req, res){
     db.Plate.findAll({
       order: [
@@ -11,6 +12,7 @@ module.exports = function(app) {
     });
   });
 
+  //display all outstanding orders
   app.get("/outstanding/:id", function(req, res){
     db.Order.findAll({
       where: {
@@ -21,6 +23,7 @@ module.exports = function(app) {
         ['id', 'ASC'],
       ],
     }).then(function(orders){
+      //json parse the items array that is stored in the db.
       for (var i = 0; i < orders.length; i++) {
         orders[i].dataValues.items = JSON.parse(orders[i].dataValues.items);
       }
@@ -29,6 +32,7 @@ module.exports = function(app) {
     });
   });
 
+  //display all completed order for a given user.
   app.get("/completed/:id", function(req, res){
     db.Order.findAll({
       where: {
@@ -39,6 +43,7 @@ module.exports = function(app) {
         ['id', 'DESC'],
       ],
     }).then(function(orders){
+      //json parse the items array that is stored in the db.
       for (var i = 0; i < orders.length; i++) {
         orders[i].dataValues.items = JSON.parse(orders[i].dataValues.items);
       }

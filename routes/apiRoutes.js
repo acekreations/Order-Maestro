@@ -2,6 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
 
+  //query to place and oder into the db
   app.post("/api/place", function(req, res){
     db.Order.create({
       user_id: req.body.userId,
@@ -11,6 +12,7 @@ module.exports = function(app) {
     });
   });
 
+  //query to mark an order as complete in the db
   app.post("/api/complete", function(req, res){
     db.Order.update(
       {
@@ -26,6 +28,8 @@ module.exports = function(app) {
     });
   });
 
+  //query to get total number of outstanding orders for a specific user. Used to display outstanding
+  //order count in side nav
   app.get("/api/outstanding/:id", function(req, res){
     db.Order.findAll({
       where: {

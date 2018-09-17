@@ -33,6 +33,7 @@ $("#placeOrder").on("click", function(){
 
   var placeOrder = {
     userId: userId,
+    //stringify items array so it can be stored in the db
     items: JSON.stringify(items)
   };
 
@@ -61,12 +62,16 @@ $(function(){
 
   getOutstanding();
 
+  //set a user id in localStorage if one doesn't already exist
   if (!localStorage.getItem("user_id")) {
     var id = "";
+
+    //generate a random id
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for (var i = 0; i < 25; i++) {
       id += possible.charAt(Math.floor(Math.random() * possible.length));
     }
+
     localStorage.setItem("user_id", id);
   }
 
