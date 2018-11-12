@@ -1,6 +1,6 @@
 # Order Maestro
 
-Order Maestro is the easiest to use restaurant order management app available!
+Order Maestro is the easiest to use restaurant order management app available! Plus, it's designed specifically for use on tablets.
 
 [Live Demo](https://order-maestro-123.herokuapp.com/)
 
