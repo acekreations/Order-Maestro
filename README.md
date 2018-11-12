@@ -13,10 +13,10 @@ Order Maestro is the easiest to use restaurant order management app available!
 - Bootstrap
 - Node.js
 - Node Packages
- - [Express](https://www.npmjs.com/package/express) - Node web framework
- - [Express-handlebars](https://www.npmjs.com/package/express-handlebars) - Template engine
- - [Sequelize](https://www.npmjs.com/package/sequelize) - ORM
- - [Mysql2](https://www.npmjs.com/package/mysql2) - For sequelize
+  - [Express](https://www.npmjs.com/package/express) - Node web framework
+  - [Express-handlebars](https://www.npmjs.com/package/express-handlebars) - Template engine
+  - [Sequelize](https://www.npmjs.com/package/sequelize) - ORM
+  - [Mysql2](https://www.npmjs.com/package/mysql2) - For sequelize
 - Deployed on Heroku
   - JawsDB - For MySQL
 
